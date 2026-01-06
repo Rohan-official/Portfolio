@@ -1,0 +1,807 @@
+:root {
+    --primary: #CCFF00;
+    /* Lime Green */
+    --secondary: #FFFFFF;
+    --dark-bg: #0a0a0a;
+    --text-color: #0a0a0a;
+    --grid-color: rgba(0, 0, 0, 0.1);
+    --accent-gray: #f2f2f2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--accent-gray);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* Background Pattern */
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.giant-text {
+    font-size: 15rem;
+    font-weight: 400;
+    letter-spacing: -5px;
+    margin-left: -10px;
+    color: var(--text-color);
+    position: relative;
+    z-index: 2;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+}
+
+.logo {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pixel-icon {
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--primary);
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+    height: 85vh;
+    position: relative;
+}
+
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.floating-badge {
+    background-color: var(--primary);
+    padding: 0.5rem 1rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    display: inline-block;
+    width: fit-content;
+    margin-bottom: 1rem;
+    position: relative;
+    border: 2px solid var(--text-color);
+    box-shadow: 4px 4px 0px var(--text-color);
+}
+
+.sub-text-block {
+    margin-top: 2rem;
+    max-width: 400px;
+    background: white;
+    padding: 2rem;
+    position: absolute;
+    bottom: 5rem;
+    left: 4rem;
+    z-index: 3;
+    border: 2px solid black;
+}
+
+.tagline {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.cta-button {
+    background: var(--text-color);
+    color: var(--primary);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s;
+}
+
+.cta-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Image */
+.hero-image-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.image-wrapper {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    /* Create a shape or container if needed */
+}
+
+.hero-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: contrast(1.1) saturate(1.2);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.stats-card {
+    position: absolute;
+    right: -2rem;
+    bottom: 8rem;
+    background: white;
+    padding: 1.5rem;
+    width: 250px;
+    border: 2px solid black;
+    box-shadow: -8px 8px 0px var(--primary);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 0.2rem;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 10px;
+    background: #ddd;
+    margin-top: 1rem;
+    border: 1px solid black;
+}
+
+.progress {
+    width: 75%;
+    height: 100%;
+    background: var(--primary);
+    animation: load 2s infinite linear;
+}
+
+/* Marquee */
+.marquee-section {
+    background: var(--primary);
+    color: var(--text-color);
+    padding: 1rem 0;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 1024px) {
+    .giant-text {
+        font-size: 8rem;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sub-text-block {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: -5rem;
+        z-index: 5;
+    }
+
+    .stats-card {
+        display: none;
+    }
+}
+
+/* Sections General */
+.content-section {
+    padding: 6rem 4rem;
+    border-bottom: 1px solid black;
+    position: relative;
+    background-color: var(--accent-gray);
+}
+
+.section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.section-title.center {
+    text-align: center;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+    color: var(--primary);
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.row {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.col-half {
+    flex: 1;
+}
+
+/* Terminal Card (About) */
+.terminal-card {
+    background: #1a1a1a;
+    /* Darker than black for contrast */
+    color: #33ff00;
+    /* Classic terminal green */
+    border: 2px solid black;
+    font-family: 'Space Mono', monospace;
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.terminal-header {
+    background: #333;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    border-bottom: 1px solid #555;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red {
+    background: #ff5f56;
+}
+
+.dot.yellow {
+    background: #ffbd2e;
+}
+
+.dot.green {
+    background: #27c93f;
+}
+
+.title {
+    color: white;
+    font-size: 0.8rem;
+    margin-left: 1rem;
+}
+
+.terminal-body {
+    padding: 2rem;
+    line-height: 1.6;
+}
+
+.highlight-text {
+    color: white;
+    border-left: 3px solid var(--primary);
+    padding-left: 1rem;
+}
+
+/* Experience Cards */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.pixel-card {
+    background: white;
+    border: 3px solid black;
+    padding: 2rem;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.pixel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 0px black;
+}
+
+.pixel-card.inverted {
+    background: black;
+    color: white;
+}
+
+.pixel-card.inverted .badge {
+    background: white;
+    color: black;
+}
+
+.pixel-corner-br {
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border: 2px solid black;
+}
+
+.card-header h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.badge {
+    background: black;
+    color: white;
+    padding: 0.2rem 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.role {
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-family: 'Space Mono', monospace;
+    display: block;
+    margin-top: 1rem;
+}
+
+/* Skills Box */
+.retro-box {
+    background: white;
+    border: 4px solid black;
+    padding: 2rem;
+}
+
+.skill-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.skill-list li {
+    margin-bottom: 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+}
+
+.bar {
+    height: 12px;
+    background: black;
+    margin-top: 0.5rem;
+    position: relative;
+}
+
+.bar::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 4px;
+    width: 100%;
+    background: repeating-linear-gradient(45deg,
+            var(--primary),
+            var(--primary) 10px,
+            black 10px,
+            black 20px);
+    opacity: 0.5;
+}
+
+.soft-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.tag {
+    background: var(--primary);
+    color: black;
+    padding: 0.5rem 1rem;
+    font-family: 'Space Mono', monospace;
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+/* Focus Card */
+.focus-card {
+    background: var(--primary);
+    color: black;
+    padding: 3rem;
+    height: 100%;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.glitch {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    color: black;
+    mix-blend-mode: hard-light;
+}
+
+.focus-desc {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 2rem 0;
+    line-height: 1.4;
+}
+
+.highlight-lime {
+    background: white;
+    padding: 0 5px;
+}
+
+.wireframe-graphic {
+    font-family: 'Space Mono', monospace;
+    border: 1px dashed black;
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+/* Footer */
+footer {
+    background: black;
+    color: white;
+    padding: 6rem 4rem 2rem 4rem;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+}
+
+.giant-text.small {
+    font-size: 8rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.big-link {
+    color: var(--primary);
+    font-size: 2rem;
+    font-family: 'Space Mono', monospace;
+    text-decoration: none;
+    border-bottom: 2px solid var(--primary);
+}
+
+.info-block {
+    margin-bottom: 2rem;
+    font-family: 'Space Mono', monospace;
+    text-align: right;
+}
+
+.info-block h4 {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.info-block a {
+    color: white;
+    text-decoration: none;
+}
+
+.copyright-bar {
+    border-top: 1px solid #333;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Responsive Content */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 3.5rem;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    .info-block {
+        text-align: left;
+    }
+
+    .giant-text.small {
+        font-size: 5rem;
+    }
+}
+
+/* Agentic AI Manifesto Section */
+.white-bg {
+    background: white;
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid black;
+}
+
+.manifesto-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+}
+
+.giant-text-medium {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+    color: black;
+    letter-spacing: -2px;
+}
+
+.manifesto-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    color: black;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    letter-spacing: -1px;
+}
+
+.highlight-block {
+    background-color: var(--primary);
+    color: black;
+    padding: 2px 10px;
+    display: inline-block;
+    border: 2px solid transparent;
+    transform: rotate(-1deg);
+    margin: 0 4px;
+    font-weight: 700;
+}
+
+.highlight-block:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.decorative-icons {
+    margin-top: 4rem;
+    display: flex;
+    gap: 2rem;
+    font-size: 3rem;
+    color: black;
+    font-family: 'Space Mono', monospace;
+}
+
+.pixel-star {
+    animation: spin 6s linear infinite;
+    display: inline-block;
+}
+
+/* Responsive Content */
+@media (max-width: 1024px) {
+    .giant-text {
+        font-size: 8rem;
+    }
+
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        padding-top: 6rem;
+    }
+
+    .sub-text-block {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 2rem;
+        z-index: 5;
+        width: 100%;
+        max-width: none;
+    }
+
+    .stats-card {
+        display: none;
+    }
+
+    .hero-image-container {
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .image-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-section,
+    .content-section,
+    footer {
+        padding: 4rem 1.5rem;
+    }
+
+    .giant-text {
+        font-size: 4.5rem;
+        line-height: 0.9;
+    }
+
+    .row {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 3rem;
+        word-break: break-word;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    .info-block {
+        text-align: left;
+    }
+
+    .giant-text.small {
+        font-size: 4rem;
+    }
+
+    /* Agentic AI Section Mobile */
+    .white-bg {
+        padding: 4rem 1.5rem;
+    }
+
+    .giant-text-medium {
+        font-size: 2rem;
+        /* Scaled down from 4rem */
+        letter-spacing: -1px;
+    }
+
+    .manifesto-text {
+        font-size: 1.25rem;
+        /* Scaled down from 2.5rem */
+    }
+
+    .decorative-icons {
+        margin-top: 2rem;
+        font-size: 2rem;
+    }
+
+    .retro-box,
+    .focus-card,
+    .pixel-card {
+        padding: 1.5rem;
+    }
+}
